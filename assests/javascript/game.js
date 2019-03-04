@@ -13,7 +13,7 @@ var guessed = [];
 
 //determines computers choice
 var compChoice = options[Math.floor(Math.random() * options.length)];
-console.log(compChoice)
+console.log(compChoice) 
 
 
 
@@ -46,14 +46,18 @@ function changeComp() {
 }
 
 //run functions at the start of the game
-// previous();
+previous();
 lives();
 readLose();
 readWins();
 
 //---------it all starts with a release of a button
-document.onkeyup = function (event) {
+document.onkeydown = function (event) {
 
+    // determines key pressed and sets it to lowercase
+    var userKey = event.key.toLowerCase();
+
+if (userKey === "a" || userKey === "b" || userKey === "c" || userKey === "d" || userKey === "e" || userKey === "f" || userKey === "g" || userKey === "h" || userKey === "i" || userKey === "j" || userKey === "k" || userKey === "l" || userKey === "m" || userKey === "n" || userKey === "o" || userKey === "p" || userKey === "q" || userKey === "r" || userKey === "s" || userKey === "t" || userKey === "u" || userKey === "v" || userKey === "w" || userKey === "x" || userKey === "y" || userKey === "z") { 
     // stops when remaining guesses is zero
     if (guess === 0) {
         loses++;
@@ -61,13 +65,14 @@ document.onkeyup = function (event) {
         guess = 10;
         guessed.length = 0;
         previous();
-        changeComp();
+        document.onkeyup = function (event) {
+            changeComp();
+        };
         return;
     };
 
 
-    // determines key pressed and sets it to lowercase
-    var userKey = event.key.toLowerCase();
+
 
     //++++++ compares user and computer choices
     // on matching choices add 1 to wins
@@ -76,8 +81,9 @@ document.onkeyup = function (event) {
         readWins();
         guessed.length = 0;
         previous();
-        changeComp();
-
+        document.onkeyup = function (event) {
+            changeComp();
+        };
 
 
     }
@@ -88,8 +94,12 @@ document.onkeyup = function (event) {
         guessed.push(userKey);
         previous();
     }
+    }
+else {
+    alert("press a letter silly")
+}
+}
 
-};
 
 
 
