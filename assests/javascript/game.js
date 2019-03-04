@@ -41,7 +41,7 @@ function previous() {
 
 // changes compChoice
 function changeComp() {
-    var compChoice = options[Math.floor(Math.random() * options.length)];
+    compChoice = options[Math.floor(Math.random() * options.length)];
     console.log(compChoice)    
 }
 
@@ -81,6 +81,7 @@ if (userKey === "a" || userKey === "b" || userKey === "c" || userKey === "d" || 
         readWins();
         guessed.length = 0;
         previous();
+        guess = 10
         document.onkeyup = function (event) {
             changeComp();
         };
